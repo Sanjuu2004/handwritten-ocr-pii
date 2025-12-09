@@ -1,18 +1,18 @@
-Handwritten OCR and PII Extraction Pipeline
+**Handwritten OCR and PII Extraction Pipeline**
 
 This repository contains an end-to-end OCR and PII-extraction pipeline for handwritten JPEG documents, implemented as part of an AI/ML engineering assignment. The system performs image pre-processing, OCR, text cleaning, PII detection, confidence-aware redaction, and document-level reporting. A Streamlit-based web interface is also included for interactive inspection and validation.
 
-1. Overview
+**1. Overview**
 
 The pipeline processes handwritten documents and extracts personally identifiable information (PII) using a structured workflow:
-
+```text
 Input (JPEG) → Pre-processing → OCR → Text Cleaning → PII Detection → Smart Redaction → Reporting
-
+```
 The solution is designed to handle slightly tilted images, variable handwriting styles, and basic clinical or form-like handwritten notes.
 
-2. Features
-2.1 Image Pre-processing
-
+**2. Features**
+## 2.1 Image Pre-processing
+```text
 Grayscale conversion
 
 Contrast enhancement using CLAHE
@@ -20,25 +20,25 @@ Contrast enhancement using CLAHE
 Adaptive thresholding
 
 Automatic deskewing to correct tilt
-
-2.2 Handwritten OCR
-
+```
+**2.2 Handwritten OCR**
+```text
 EasyOCR-based text extraction
 
 Per-block text bounding boxes
 
 Confidence scores for each text block
-
-2.3 Text Cleaning
-
-Removal of artifacts
+```
+**2.3 Text Cleaning**
+```text
+Removal of OCR artifacts
 
 Normalization of whitespace and line structure
+```
+**2.4 PII Detection**
 
-2.4 PII Detection
-
-Regex-based detection of:
-
+## Regex-based detection of:
+```text
 Email
 
 Phone numbers
@@ -47,31 +47,31 @@ Dates
 
 Identifiers (ID, Patient ID, MRN)
 
-Designed to support clinic-style and general-purpose notes
+Designed to support clinic-style and general-purpose handwritten notes.
+```
+**2.5 Smart, Confidence-Based Redaction**
+```text
+Redaction occurs only when OCR confidence exceeds a configurable threshold (default: 0.4):
 
-2.5 Smart, Confidence-Based Redaction
+High-confidence PII → Automatically redacted in image
 
-Unlike basic redaction, this system selectively redacts PII only when OCR confidence exceeds a threshold (default: 0.4):
+Low-confidence PII → Flagged but not redacted
 
-High-confidence PII → redacted in image
+This avoids incorrect masking due to ambiguous handwriting and aligns with human-in-the-loop safety principles.
+```
+**2.6 OCR Preview Visualization**
 
-Low-confidence PII → flagged but not auto-redacted
-
-This avoids incorrect masking due to uncertain OCR output and aligns with human-in-the-loop design principles.
-
-2.6 OCR Preview Visualization
-
-For transparency and debugging, the system produces a color-coded preview image:
-
+A color-coded preview image is generated to visualize OCR block classifications:
+```text
 Green: Non-PII text blocks
 
-Red: High-confidence PII blocks (redacted)
+Red: High-confidence PII (redacted)
 
 Yellow: Low-confidence PII candidates
+```
+**2.7 Document-Level Summary Reports**
 
-2.7 Document-Level Summary Reports
-
-Each processed document includes a JSON report containing:
+Each processed document includes a structured JSON report containing:
 
 OCR confidence statistics
 
@@ -81,11 +81,11 @@ Redaction statistics
 
 Output file locations
 
-Automatically generated warnings for edge cases (e.g., low OCR confidence, no text detected)
+Automatically generated warnings (e.g., low OCR confidence)
 
-2.8 Streamlit Web Application
-
-A simple UI is provided for uploading handwritten documents and visualizing:
+**2.8 Streamlit Web Application**
+```text
+A simple web interface is provided for uploading handwritten documents and visualizing:
 
 Original vs. redacted image
 
@@ -95,30 +95,32 @@ Extracted text
 
 Detected PII
 
-Confidence-based warnings
+Confidence-based alerts
 
-Full JSON report
-
-3. Repository Structure
+Full summary report
+```
+**3. Repository Structure**
+```text
 handwritten-ocr-pii/
 │
-├─ samples/                         # Handwritten JPEG inputs
-├─ outputs/                         # Extracted text, redacted files, reports
+├── samples/                       # Handwritten JPEG inputs
+├── outputs/                       # Extracted text, redacted files, reports
 │
-├─ src/
-│   ├─ preprocessing.py             # Pre-processing pipeline
-│   ├─ ocr_module.py                # EasyOCR wrapper
-│   ├─ text_cleaning.py             # Cleanup utilities
-│   ├─ pii_detection.py             # Regex-based PII detector
-│   ├─ redaction.py                 # Smart redaction + preview
-│   └─ pipeline.py                  # End-to-end orchestrator
+├── src/
+│   ├── preprocessing.py           # Pre-processing pipeline
+│   ├── ocr_module.py              # EasyOCR wrapper
+│   ├── text_cleaning.py           # Cleanup utilities
+│   ├── pii_detection.py           # Regex-based PII detector
+│   ├── redaction.py               # Smart redaction + preview
+│   └── pipeline.py                # End-to-end orchestrator
 │
-├─ main.py                          # Command-line driver
-├─ streamlit_app.py                 # Interactive UI
-├─ requirements.txt
-└─ README.md
-
+├── main.py                        # Command-line driver
+├── streamlit_app.py               # Interactive UI
+├── requirements.txt
+└── README.md
+```
 4. Installation
+```text
 git clone <repo-url>
 cd handwritten-ocr-pii
 
@@ -129,86 +131,82 @@ python -m venv .venv
 source .venv/bin/activate
 
 pip install -r requirements.txt
-
-5. Usage (Command Line)
+```
+**5. Usage (Command Line)**
 Process all samples
+```text
 python main.py
-
+```
 Process a single image
+```text
 python main.py --input samples/1.jpeg
-
+```
 Adjust redaction confidence threshold
+```text
 python main.py --input samples/1.jpeg --conf-threshold 0.6
-
+```
 Outputs generated per file
-
-<name>_text.txt – cleaned OCR text
+```text
+<name>_text.txt – Cleaned OCR text
 
 <name>_pii.json – PII detection results
 
-<name>_redacted_text.txt – text with PII masked
+<name>_redacted_text.txt – Text with PII masked
 
-<name>_redacted.jpg – image with PII masked
+<name>_redacted.jpg – Image with sensitive sections redacted
 
-<name>_ocr_preview.jpg – visualization of detected text blocks
+<name>_ocr_preview.jpg – Visual highlight of OCR blocks
 
-<name>_report.json – consolidated analysis and warnings
-
-6. Streamlit Web Interface
-
-To launch the web UI:
-
+<name>_report.json – Consolidated analysis and warnings
+```
+**6. Streamlit Web Interface**
+## Launch the UI:
+```text
 streamlit run streamlit_app.py
+```
 
+The interface supports:
+```text
+Viewing original and redacted images
 
-The interface supports file uploads and displays:
+OCR preview visualization
 
-Original image
+Extracted text exploration
 
-Redacted output
+PII summary
 
-OCR preview with bounding boxes
+Redaction behavior based on confidence
 
-Extracted text
+Structured JSON report
+```
+## Example UI Screenshots
 
-Detected PII elements
+(Replace example images with actual uploaded links)
 
-Confidence analysis
+## Original vs. Redacted Image
 
-Full JSON report
+## OCR Preview (Color-Coded Bounding Boxes)
 
-Example UI Screenshots
+## Extracted Text and PII Detection
 
-Replace the placeholders below with uploaded GitHub image links:
+## Summary Report and Warnings
 
-Original vs Redacted Image
+**7. Design Choices and Rationale**
 
-OCR Preview (Color-Coded Bounding Boxes)
+EasyOCR was chosen for its robustness on handwritten text compared to rule-based OCR engines such as Tesseract.
 
-Extracted Text and PII Detection
+Confidence-aware redaction allows safer handling by avoiding false positives.
 
-Summary Report and Warnings
+JSON reporting improves transparency, auditability, and debugging.
 
-7. Design Choices and Rationale
+Streamlit UI provides a clear visualization layer for both technical reviewers and non-technical users.
 
-EasyOCR is used due to its robustness on non-uniform handwriting compared to strict rule-based OCR like Tesseract.
+**8. Limitations and Possible Extensions**
 
-Confidence-based redaction prevents over-redaction and ensures reliability in ambiguous handwriting scenarios.
+Handwriting style, lighting, and image noise significantly affect OCR accuracy.
 
-Report generation and warnings are included to simulate production-grade auditability.
+Regex rules may require modification for domain-specific forms.
 
-The Streamlit UI provides transparency and demonstrates real-world user interaction and model interpretability.
+Advanced NER models (spaCy, transformer models) could improve name and ID detection.
 
-8. Limitations and Possible Extensions
-
-Handwriting quality and photograph clarity significantly affect OCR reliability.
-
-Regex rules may require customization for specific forms or clinical workflows.
-
-Additional NER models (spaCy, transformers) could enhance name detection.
-
-Image enhancement techniques such as denoising and morphological operations can be explored.
-
-9. License
-
-This project is intended for evaluation purposes and educational demonstration only.
+Additional image enhancement (denoising, morphological filters) may further improve OCR quality.
