@@ -1,4 +1,4 @@
-**Handwritten OCR and PII Extraction Pipeline**
+## Handwritten OCR and PII Extraction Pipeline
 
 This repository contains an end-to-end OCR and PII-extraction pipeline for handwritten JPEG documents, implemented as part of an AI/ML engineering assignment. The system performs image pre-processing, OCR, text cleaning, PII detection, confidence-aware redaction, and document-level reporting. A Streamlit-based web interface is also included for interactive inspection and validation.
 
@@ -11,7 +11,7 @@ Input (JPEG) → Pre-processing → OCR → Text Cleaning → PII Detection → 
 The solution is designed to handle slightly tilted images, variable handwriting styles, and basic clinical or form-like handwritten notes.
 
 **2. Features**
-## 2.1 Image Pre-processing
+**2.1 Image Pre-processing**
 ```text
 Grayscale conversion
 
@@ -37,7 +37,7 @@ Normalization of whitespace and line structure
 ```
 **2.4 PII Detection**
 
-## Regex-based detection of:
+**Regex-based detection of:**
 ```text
 Email
 
@@ -119,7 +119,7 @@ handwritten-ocr-pii/
 ├── requirements.txt
 └── README.md
 ```
-4. Installation
+**4. Installation**
 ```text
 git clone <repo-url>
 cd handwritten-ocr-pii
@@ -133,6 +133,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 **5. Usage (Command Line)**
+
 Process all samples
 ```text
 python main.py
@@ -160,7 +161,7 @@ Outputs generated per file
 <name>_report.json – Consolidated analysis and warnings
 ```
 **6. Streamlit Web Interface**
-## Launch the UI:
+**Launch the UI:**
 ```text
 streamlit run streamlit_app.py
 ```
@@ -179,17 +180,17 @@ Redaction behavior based on confidence
 
 Structured JSON report
 ```
-## Example UI Screenshots
+**Example UI Screenshots**
 
 (Replace example images with actual uploaded links)
 
-## Original vs. Redacted Image
+**Original vs. Redacted Image**
 
-## OCR Preview (Color-Coded Bounding Boxes)
+**OCR Preview (Color-Coded Bounding Boxes)**
 
-## Extracted Text and PII Detection
+**Extracted Text and PII Detection**
 
-## Summary Report and Warnings
+**Summary Report and Warnings**
 
 **7. Design Choices and Rationale**
 
@@ -210,3 +211,4 @@ Regex rules may require modification for domain-specific forms.
 Advanced NER models (spaCy, transformer models) could improve name and ID detection.
 
 Additional image enhancement (denoising, morphological filters) may further improve OCR quality.
+
