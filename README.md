@@ -181,8 +181,11 @@ Redaction behavior based on confidence
 Structured JSON report
 ```
 **Example UI Screenshots**
+<img width="1919" height="1199" alt="image" src="https://github.com/user-attachments/assets/b42d09be-69c4-4af2-9118-f435b6725453" />
+<img width="1751" height="892" alt="image" src="https://github.com/user-attachments/assets/ea1d63d2-913f-4997-835c-d4d52053a485" />
+<img width="896" height="836" alt="image" src="https://github.com/user-attachments/assets/fc154531-530f-4708-9129-ef598bd106b5" />
 
-(Replace example images with actual uploaded links)
+
 
 **Original vs. Redacted Image**
 
@@ -211,4 +214,5 @@ Regex rules may require modification for domain-specific forms.
 Advanced NER models (spaCy, transformer models) could improve name and ID detection.
 
 Additional image enhancement (denoising, morphological filters) may further improve OCR quality.
+
 
