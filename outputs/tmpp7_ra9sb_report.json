@@ -1,0 +1,36 @@
+{
+  "document_name": "tmpp7_ra9sb.jpg",
+  "confidence_threshold_for_redaction": 0.7,
+  "ocr": {
+    "blocks_total": 16,
+    "confidence": {
+      "avg": 0.46130175770708487,
+      "min": 0.14984978913898636,
+      "max": 0.9761755169131767
+    }
+  },
+  "pii_detected": {
+    "email": [],
+    "phone": [
+      "7939 492931"
+    ],
+    "date": [],
+    "id": []
+  },
+  "redaction_stats": {
+    "total_blocks": 16,
+    "pii_blocks": 1,
+    "redacted_blocks": 0,
+    "low_conf_pii_blocks": 1
+  },
+  "output_paths": {
+    "clean_text": "D:\\handwritten-ocr-pii\\outputs\\tmpp7_ra9sb_text.txt",
+    "pii_json": "D:\\handwritten-ocr-pii\\outputs\\tmpp7_ra9sb_pii.json",
+    "redacted_text": "D:\\handwritten-ocr-pii\\outputs\\tmpp7_ra9sb_redacted_text.txt",
+    "redacted_image": "D:\\handwritten-ocr-pii\\outputs\\tmpp7_ra9sb_redacted.jpg",
+    "ocr_preview_image": "D:\\handwritten-ocr-pii\\outputs\\tmpp7_ra9sb_ocr_preview.jpg"
+  },
+  "warnings": [
+    "1 text blocks contained possible PII but had low OCR confidence and were not auto-redacted in the image."
+  ]
+}

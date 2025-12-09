@@ -1,0 +1,35 @@
+{
+  "document_name": "3.jpeg",
+  "confidence_threshold_for_redaction": 0.4,
+  "ocr": {
+    "blocks_total": 31,
+    "confidence": {
+      "avg": 0.36778219632222936,
+      "min": 0.0,
+      "max": 0.9967867955310794
+    }
+  },
+  "pii_detected": {
+    "email": [],
+    "phone": [],
+    "date": [],
+    "id": []
+  },
+  "redaction_stats": {
+    "total_blocks": 31,
+    "pii_blocks": 0,
+    "redacted_blocks": 0,
+    "low_conf_pii_blocks": 0
+  },
+  "output_paths": {
+    "clean_text": "D:\\handwritten-ocr-pii\\outputs\\3_text.txt",
+    "pii_json": "D:\\handwritten-ocr-pii\\outputs\\3_pii.json",
+    "redacted_text": "D:\\handwritten-ocr-pii\\outputs\\3_redacted_text.txt",
+    "redacted_image": "D:\\handwritten-ocr-pii\\outputs\\3_redacted.jpg",
+    "ocr_preview_image": "D:\\handwritten-ocr-pii\\outputs\\3_ocr_preview.jpg"
+  },
+  "warnings": [
+    "Low average OCR confidence (0.37). Handwriting quality, lighting, or tilt may be affecting recognition.",
+    "No PII detected in this document given the current regex rules."
+  ]
+}

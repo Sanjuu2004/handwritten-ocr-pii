@@ -1,0 +1,34 @@
+{
+  "document_name": "2.jpeg",
+  "confidence_threshold_for_redaction": 0.4,
+  "ocr": {
+    "blocks_total": 16,
+    "confidence": {
+      "avg": 0.46130175770708487,
+      "min": 0.14984978913898636,
+      "max": 0.9761755169131767
+    }
+  },
+  "pii_detected": {
+    "email": [],
+    "phone": [
+      "7939 492931"
+    ],
+    "date": [],
+    "id": []
+  },
+  "redaction_stats": {
+    "total_blocks": 16,
+    "pii_blocks": 1,
+    "redacted_blocks": 1,
+    "low_conf_pii_blocks": 0
+  },
+  "output_paths": {
+    "clean_text": "D:\\handwritten-ocr-pii\\outputs\\2_text.txt",
+    "pii_json": "D:\\handwritten-ocr-pii\\outputs\\2_pii.json",
+    "redacted_text": "D:\\handwritten-ocr-pii\\outputs\\2_redacted_text.txt",
+    "redacted_image": "D:\\handwritten-ocr-pii\\outputs\\2_redacted.jpg",
+    "ocr_preview_image": "D:\\handwritten-ocr-pii\\outputs\\2_ocr_preview.jpg"
+  },
+  "warnings": []
+}

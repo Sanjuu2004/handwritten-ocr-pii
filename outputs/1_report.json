@@ -1,0 +1,34 @@
+{
+  "document_name": "1.jpeg",
+  "confidence_threshold_for_redaction": 0.4,
+  "ocr": {
+    "blocks_total": 24,
+    "confidence": {
+      "avg": 0.40357553633513793,
+      "min": 0.05020080646338543,
+      "max": 0.9938142886785641
+    }
+  },
+  "pii_detected": {
+    "email": [],
+    "phone": [],
+    "date": [],
+    "id": []
+  },
+  "redaction_stats": {
+    "total_blocks": 24,
+    "pii_blocks": 0,
+    "redacted_blocks": 0,
+    "low_conf_pii_blocks": 0
+  },
+  "output_paths": {
+    "clean_text": "D:\\handwritten-ocr-pii\\outputs\\1_text.txt",
+    "pii_json": "D:\\handwritten-ocr-pii\\outputs\\1_pii.json",
+    "redacted_text": "D:\\handwritten-ocr-pii\\outputs\\1_redacted_text.txt",
+    "redacted_image": "D:\\handwritten-ocr-pii\\outputs\\1_redacted.jpg",
+    "ocr_preview_image": "D:\\handwritten-ocr-pii\\outputs\\1_ocr_preview.jpg"
+  },
+  "warnings": [
+    "No PII detected in this document given the current regex rules."
+  ]
+}
